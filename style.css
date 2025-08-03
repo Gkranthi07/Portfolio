@@ -30,27 +30,37 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: var(--card-bg);
-    padding: 1rem 5%;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 0.8rem 5%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
 }
 
-.logo {
-    font-size: 1.5rem;
+.nav-logo {
+    font-size: 1.2rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: white;
+    background-color: var(--primary-color);
+    text-decoration: none;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+    transform: scale(1.1);
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-}
-
-.nav-links li {
-    padding: 0 1rem;
+    gap: 1.5rem; /* Adds space between links */
 }
 
 .nav-links a {
@@ -64,6 +74,47 @@ body {
     color: var(--secondary-color);
 }
 
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.social-link {
+    font-weight: 600;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.social-link:hover {
+    color: var(--secondary-color);
+}
+
+/* --- Mobile Navigation --- */
+@media screen and (max-width: 900px) { /* Adjusted breakpoint */
+    .nav-links, .nav-actions {
+        display: none; /* Hide original links and actions */
+    }
+    .burger {
+        display: block; /* Show hamburger menu */
+    }
+    /* This is your existing responsive nav-links class that the JS will toggle */
+    .nav-links.nav-active {
+        position: fixed;
+        right: 0px;
+        height: 92vh;
+        top: 8vh;
+        background-color: var(--card-bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        transform: translateX(0%);
+        transition: transform 0.5s ease-in;
+        gap: 2rem; /* Spacing for vertical mobile menu */
+        padding-top: 2rem;
+    }
+}
 /* --- Hero Section --- */
 #hero {
     display: flex;
